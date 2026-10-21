@@ -1,22 +1,20 @@
+import asyncio
 import sqlite3
 import zipfile
 from pathlib import Path
 from unittest import mock
 
-import pytest
-
 from generate import generate
 from test.helpers.test_leetcode import QUESTION_DETAIL
 
 
-@pytest.mark.asyncio
-async def test_generate_writes_anki_package(tmp_path: Path) -> None:
+def test_generate_writes_anki_package(tmp_path: Path) -> None:
     output = tmp_path / "sample.apkg"
     with mock.patch(
         "leetcode_anki.helpers.leetcode.LeetcodeData._get_problems_data",
         return_value=[QUESTION_DETAIL],
     ):
-        await generate(0, 1, 2, "", str(output))
+        asyncio.run(generate(0, 1, 2, "", str(output)))
 
     with zipfile.ZipFile(output) as package:
         database = tmp_path / "collection.anki2"
