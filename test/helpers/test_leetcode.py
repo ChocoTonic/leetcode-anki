@@ -108,9 +108,9 @@ class TestLeetcodeData:
     _question_detail_singleton: Optional[
         leetcode.models.graphql_question_detail.GraphqlQuestionDetail
     ] = None
-    _leetcode_data_singleton: Optional[
-        leetcode_anki.helpers.leetcode.LeetcodeData
-    ] = None
+    _leetcode_data_singleton: Optional[leetcode_anki.helpers.leetcode.LeetcodeData] = (
+        None
+    )
 
     @property
     def _question_details(
