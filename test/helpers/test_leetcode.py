@@ -132,7 +132,7 @@ class TestLeetcodeData:
 
         return leetcode_data
 
-    def setup(self) -> None:
+    def setup_method(self) -> None:
         self._question_detail_singleton = QUESTION_DETAIL
         self._leetcode_data_singleton = leetcode_anki.helpers.leetcode.LeetcodeData(
             0, 10000
